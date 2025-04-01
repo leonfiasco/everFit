@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 174 75% 37%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: hsl(174, 75%, 92%);
+    --primary-dark: hsl(174, 75%, 27%);
+
+    --secondary: 262 60% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 21 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 72% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 174 75% 37%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 214 32% 91%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 214 32% 91%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 214 32% 91%;
+
+    --primary: 174 75% 37%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: hsl(174, 75%, 17%);
+    --primary-dark: hsl(174, 75%, 57%);
+
+    --secondary: 262 60% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 21 90% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --success: 142 72% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 174 75% 37%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for the workout app */
+.progress-gradient {
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--success)) 100%);
+}
+
+.card-hover-effect {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.workout-complete-badge {
+  background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--primary)) 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Enhanced UI styles */
+.stat-card {
+  @apply flex flex-col rounded-xl border p-4 transition-all ease-in-out;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+  backdrop-filter: blur(8px);
+}
+
+.dark .stat-card {
+  background: linear-gradient(to bottom right, rgba(30, 30, 35, 0.8), rgba(15, 15, 20, 0.6));
+}
+
+.goal-card {
+  @apply rounded-lg p-4 text-white transition-all duration-300 ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.goal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.goal-card:hover::before {
+  opacity: 1;
+}
+
+.focus-card {
+  @apply rounded-lg p-4 text-foreground transition-all duration-300 ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.focus-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, hsl(var(--secondary) / 10%) 0%, hsl(var(--accent) / 10%) 100%);
+  z-index: -1;
+}
+
+.focus-card:hover::before {
+  background: linear-gradient(45deg, hsl(var(--secondary) / 20%) 0%, hsl(var(--accent) / 20%) 100%);
+}
+
+.progress-bar {
+  @apply relative h-2 overflow-hidden rounded-full bg-muted;
+}
+
+.progress-bar-fill {
+  @apply absolute left-0 top-0 h-full;
+  background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--success)) 100%);
+  transition: width 0.5s ease;
+}
+
+.workout-timer {
+  @apply flex items-center justify-center rounded-full text-4xl font-bold;
+  background: conic-gradient(hsl(var(--accent)) var(--progress, 0%), hsl(var(--muted)) var(--progress, 0%));
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.workout-timer::before {
+  content: "";
+  @apply absolute rounded-full bg-background;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+}
+
+.workout-timer-text {
+  @apply relative z-10;
+}
+
+/* Enhancement for workout card */
+.enhanced-workout-card {
+  @apply relative rounded-xl border bg-card p-6 transition-all duration-300;
+  overflow: hidden;
+}
+
+.enhanced-workout-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  @apply bg-primary;
+}
+
+.enhanced-workout-card:hover {
+  @apply shadow-lg;
+  transform: translateY(-4px);
+}
+
+.enhanced-workout-card.completed::before {
+  @apply bg-success;
+}
+

@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"types": ["node"],
+		"moduleResolution": "node",
+		"outDir": "../dist",
+		"baseUrl": ".",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"esModuleInterop": true
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["node_modules"]
+}
