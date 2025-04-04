@@ -6,14 +6,19 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import compression from "compression";
 import cors from "cors";
-import router from "../routes/chat";
+import router from "./routes/chat";
+import connectDB from "./config/db";
+import cookieParser from "cookie-parser";
 
 const app = express();
+
+connectDB();
 
 app.use(compression());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 app.use(cors());
+app.use(cookieParser());
 
 app.use("/api", router);
 

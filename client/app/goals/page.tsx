@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
-import { FOCUS_OPTIONS } from "@/client/lib/constants";
+import { FOCUS_OPTIONS } from "../../lib/constants";
 
 const GOALS = [
   {
@@ -53,7 +53,9 @@ export default function GoalsPage() {
     ? FOCUS_OPTIONS[selectedGoal] || []
     : [];
 
-  const handleGoalSelect = (goalId: string) => {
+  const handleGoalSelect = (goalId: string, goal: typeof GOALS) => {
+    console.log("GOAL ⚽️", goal);
+
     setSelectedGoal(goalId);
   };
 
@@ -120,7 +122,7 @@ export default function GoalsPage() {
                       ? "border-primary ring-2 ring-primary ring-opacity-50"
                       : ""
                   }`}
-                  onClick={() => handleGoalSelect(goal.id)}
+                  onClick={() => handleGoalSelect(goal.id, goal)}
                 >
                   <div
                     className={`absolute top-0 h-1 w-full ${

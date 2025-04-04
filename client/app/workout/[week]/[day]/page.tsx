@@ -24,8 +24,8 @@ import {
   Play,
   Square,
 } from "lucide-react";
-import { generateWorkoutPlan } from "@/client/lib/workout-generator";
-import type { WorkoutPlan, WorkoutDay } from "@/client/lib/types";
+import { generateWorkoutPlan } from "../../../../lib/workout-generator";
+import type { WorkoutPlan, WorkoutDay } from "../../../../lib/types";
 
 export default function WorkoutPage({
   params,

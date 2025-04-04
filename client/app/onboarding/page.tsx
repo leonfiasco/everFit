@@ -20,7 +20,7 @@ import {
   EQUIPMENT_OPTIONS,
   EXPERIENCE_OPTIONS,
   DAYS_PER_WEEK_OPTIONS,
-} from "@/client/lib/constants";
+} from "../../lib/constants";
 
 export default function OnboardingPage() {
   const router = useRouter();
@@ -85,6 +85,8 @@ export default function OnboardingPage() {
       }
 
       const data = await response.json();
+
+      console.log("🔥", data);
 
       // Save the workout plan to localStorage
       localStorage.setItem("workoutPlan", JSON.stringify(data.plan));
